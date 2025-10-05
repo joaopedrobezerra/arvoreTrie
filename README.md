@@ -1,4 +1,4 @@
-n# Implementação de Árvore Trie - Estruturas de Dados Multiway
+# Implementação de Árvore Trie - Estruturas de Dados Multiway
 
 ## 📋 Informações do Trabalho
 
