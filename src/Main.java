@@ -11,7 +11,7 @@ public class Main {
         trie.insert("cachorro");
         trie.insert("caminho");
         trie.insert("cantar");
-        trie.insert("café");
+        trie.insert("cafe");
         trie.insert("casa");
 
         
