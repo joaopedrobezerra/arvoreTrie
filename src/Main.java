@@ -30,5 +30,22 @@ public class Main {
         for (String suggestion : sug) {
             System.out.println(" - " + suggestion);
         }
+
+        System.out.println("\n=== TESTES DE REMOÇÃO ===");
+        
+        System.out.println("Removendo 'casa': " + trie.remove("casa"));
+        System.out.println("search(casa) após remoção: " + trie.search("casa"));
+        System.out.println("search(cachorro) ainda existe: " + trie.search("cachorro"));
+        
+        System.out.println("Removendo 'cachorro': " + trie.remove("cachorro"));
+        System.out.println("search(cachorro) após remoção: " + trie.search("cachorro"));
+        
+        System.out.println("Tentando remover palavra inexistente 'inexistente': " + trie.remove("inexistente"));
+        
+        System.out.println("\nSugestões para 'ca' após remoções:");
+        String[] sug2 = trie.suggestions("ca", 10);
+        for (String suggestion : sug2) {
+            System.out.println(" - " + suggestion);
+        }
     }
 }

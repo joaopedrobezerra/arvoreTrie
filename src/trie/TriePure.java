@@ -59,6 +59,47 @@ public class TriePure {
         return true;
     }
 
+    public boolean remove(String word) {
+        if (word == null) return false;
+        return removeHelper(root, word, 0);
+    }
+
+    private boolean removeHelper(TrieNode node, String word, int index) {
+        if (node == null) return false;
+        
+        if (index == word.length()) {
+            if (!node.isEndOfWord) return false;
+            node.isEndOfWord = false;
+            return hasNoChildren(node);
+        }
+        
+        char c = word.charAt(index);
+        int idx = charToIndex(c);
+        if (idx < 0 || idx >= 26) return false;
+        
+        TrieNode child = node.children[idx];
+        if (child == null) return false;
+        
+        boolean shouldDeleteChild = removeHelper(child, word, index + 1);
+        
+        if (shouldDeleteChild) {
+            node.children[idx] = null;
+            return !node.isEndOfWord && hasNoChildren(node);
+        }
+        
+        return false;
+    }
+
+    private boolean hasNoChildren(TrieNode node) {
+        if (node == null) return true;
+        for (int i = 0; i < 26; i++) {
+            if (node.children[i] != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public String[] suggestions(String prefix, int max) {
         if (prefix == null || max <= 0) return new String[0];
         TrieNode node = root;
